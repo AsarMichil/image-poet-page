@@ -1,1 +1,52 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+@import "bootstrap/scss/functions";
+
+// color override MUST BE BEFORE scss/variables
+$primary: #F3EFE9;
+@import "bootstrap/scss/variables";
+
+
+// spacing extension to bootstrap map
+$spacing-extension: (
+    6: $spacer * 4,
+    7: $spacer * 5,
+    8: $spacer * 6
+);
+$spacers: map-merge($spacing-extension, $spacers);
+
+
+
+/* Importing Bootstrap SCSS file. */
+@import "bootstrap/scss/bootstrap";
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500&display=swap");
+
+$heading-font-family: 'Montserrat', sans-serif;
+$nav-font-family: 'Montserrat', sans-serif;
+$body-font-family: 'Montserrat', sans-serif;
+$base-font-size: 18px;
+$base-font-weight: 400;
+$heading-font-weight: 500;
+$nav-font-weight: 100;
+
+$link-secondary: black;
+
+
+
+nav{
+    a{
+        font-family: $nav-font-family;
+        font-weight: $nav-font-weight;
+        
+    }
+}
+
+body{
+    background-color: $primary;
+    font-family: $body-font-family;
+}
+html{
+    background-color: $primary;
+}
