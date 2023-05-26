@@ -42,11 +42,12 @@ $utilities: map-merge(
 
 /* Importing Bootstrap SCSS file. */
 @import "bootstrap/scss/bootstrap";
-@import "scss-styles/custom-columns.scss";
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Montserrat:wght@100;300;400;500&display=swap");
+
 
 $heading-font-family: "Montserrat", sans-serif;
 $nav-font-family: "Montserrat", sans-serif;
+$brand-font-family: "Libre Baskerville, serif";
 $body-font-family: "Montserrat", sans-serif;
 $base-font-size: 18px;
 $base-font-weight: 400;
@@ -72,4 +73,15 @@ html {
 
 .obj-fit-cover{
   object-fit: cover;
+}
+
+.brand-text{
+  font-size: 32px;
+  font-family: $brand-font-family;
+  font-weight: $base-font-weight;
+}
+
+.nav-link-text{
+  font-size: 18px;
+  font-weight: $base-font-weight;
 }
