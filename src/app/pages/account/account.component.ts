@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core'
 import { FormBuilder } from '@angular/forms'
 import { AuthSession } from '@supabase/supabase-js'
-import { Profile, SupabaseService } from '../supabase.service'
-
+import { Profile, SupabaseService } from 'src/app/services/supabase.service'
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
@@ -15,15 +14,6 @@ export class AccountComponent implements OnInit {
   @Input()
   session!: AuthSession
 
-  get avatarUrl() {
-    return this.updateProfileForm.value.avatar_url as string
-  }
-  async updateAvatar(event: string): Promise<void> {
-    this.updateProfileForm.patchValue({
-      avatar_url: event,
-    })
-    await this.updateProfile()
-  }
   updateProfileForm = this.formBuilder.group({
     username: '',
     website: '',
