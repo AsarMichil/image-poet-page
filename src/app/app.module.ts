@@ -16,10 +16,13 @@ import { PgOneOneSkinnyComponent } from './pages/photo-grid/pg-one-one-skinny/pg
 import { PgOneSkinnyOneComponent } from './pages/photo-grid/pg-one-skinny-one/pg-one-skinny-one.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import { AuthComponent } from './auth/auth.component';
-import { AccountComponent } from './pages/account/account.component';
-
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { GalleryComponent } from './pages/gallery/gallery.component';
+import { GroupsComponent } from './pages/groups/groups.component';
+import { MessagesComponent } from './pages/messages/messages.component';
+import { LoginHeaderBarComponentComponent } from './login-header-bar-component/login-header-bar-component.component';
+import { AccountTempComponent } from './pages/account-temp/account-temp.component';
 
 @NgModule({
   declarations: [
@@ -34,8 +37,14 @@ import { AccountComponent } from './pages/account/account.component';
     PgSkinnyOneOneComponent,
     PgOneOneSkinnyComponent,
     PgOneSkinnyOneComponent,
-    AuthComponent,
-    AccountComponent,
+    LoginComponent,
+    RegisterComponent,
+    GalleryComponent,
+    GroupsComponent,
+    MessagesComponent,
+    LoginHeaderBarComponentComponent,
+    AccountTempComponent,
+    
  
   ],
   imports: [
@@ -43,7 +52,8 @@ import { AccountComponent } from './pages/account/account.component';
     AppRoutingModule,
     NgbModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,17 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid px-md-7 px-3">
+  <h3 class="pt-4 pb-2">Welcome to your account page</h3>
+  <p>
+    Here you will be able to find all of your uploaded images and works
+  </p>
+  <p [ngStyle]="{ display: toGo }" > It looks kinda empty here... lets upload some of your images: </p>
+  <button class="btn-outline-dark" [ngStyle]="{ display: toGo }"  (click)="addImages()">
+    upload!
+  </button>
+  <app-pg-one-skinny-one class="" [ngStyle]="{ display: displayStyle }"
+    [imageOneUrl]="image1"
+    [imageTwoUrl]="image2"
+    [imageThreeUrl]="image3"
+  ></app-pg-one-skinny-one>
+</div>
