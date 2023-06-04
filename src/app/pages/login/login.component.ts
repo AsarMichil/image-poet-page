@@ -1,5 +1,3 @@
-
-
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
@@ -16,17 +14,21 @@ export class LoginComponent implements OnInit {
     email: ['asarmichil@gmail.com', Validators.required],
     password: ['123456', Validators.required],
   });
-  
-
+  pwReq = this.fb.nonNullable.group({
+    email: ['michilzulu@gmail.com', Validators.required],
+  });
+  magicModal = this.fb.nonNullable.group({
+    email: ['zuluev.asar@gmail.com', Validators.required],
+  });
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router
   ) {
-    this.authService.getCurrentUser().subscribe((user) =>{
-      if(user){
+    this.authService.getCurrentUser().subscribe((user) => {
+      if (user) {
         console.log('USER ON LOGIN PAGE: ', user);
-        this.router.navigateByUrl('/groups', {replaceUrl: true});
+        this.router.navigateByUrl('/groups', { replaceUrl: true });
       }
     });
   }
@@ -38,41 +40,68 @@ export class LoginComponent implements OnInit {
     return this.credentials.controls.password;
   }
 
-  displayStyle = "none";
+  displayStyle = 'none';
+  displayMagicModal = 'none';
+  showSuccess = 'none';
+
   openPopup() {
-    this.displayStyle = "block";
+    this.displayStyle = 'block';
   }
   closePopup() {
-    this.displayStyle = "none";
+    this.displayStyle = 'none';
+    this.displayMagicModal = 'none';
   }
-
+  hideSuccess() {
+    this.showSuccess = 'none';
+  }
+  
   ngOnInit(): void {}
 
   async login() {
     this.authService
-    .signIn(this.credentials.getRawValue())
-    .then(async(data) =>{
-      if(data.error){
-        loginFailed(data);
-      }
-    });
+      .signIn(this.credentials.getRawValue())
+      .then(async (data) => {
+        if (data.error) {
+          loginFailed(data);
+        }
+      });
   }
   forgotPw() {
-    this.displayStyle="block";
+    this.displayStyle = 'block';
     return;
   }
-  async getMagicLink() {
-    return true;
-  }
-  async sendPwResetRequest(){
-    console.log(await this.authService.sendPwReset(this.credentials.controls.email));
-    
+  getMagicLink() {
+    this.displayMagicModal = 'block';
+    return;
   }
 
- 
+  async sendMagicLink(){
+    console.log(this.magicModal.getRawValue().email);
+    const data = await this.authService.signInWIthEmail(this.magicModal.getRawValue().email)
+    if (data.error) {
+      loginFailed(data);
+    }else{
+      this.showSuccess = 'block';
+      setTimeout(this.hideSuccess,1500);
+    }
+  }
+  async sendPwResetRequest() {
+    console.log(this.pwReq.getRawValue().email);
+    const data = await this.authService.sendPwReset(this.pwReq.getRawValue().email)
+    if (data.error) {
+      pwReqFailed(data);
+    }else{
+      this.showSuccess = 'block';
+      setTimeout(this.hideSuccess,1500);
 
+    }
+  }
 }
 function loginFailed(data) {
   console.log('LOGIN FAILED', data.error.message);
+}
+
+function pwReqFailed(data) {
+  console.log('PASSWORD REQU FAILED', data.error.message);
 }
 

@@ -35,8 +35,10 @@ export class AuthService {
     if(this.currentUser.value){
       return;
     }
-
+    console.log("loading user");
     const user = await this.supabase.auth.getUser();
+    console.log("loaded user");
+
     if(user.data.user){
       this.currentUser.next(user.data.user);
     }
@@ -46,14 +48,16 @@ export class AuthService {
     }
     
   }
+
   signUp(credentials: {email; password}){
     return this.supabase.auth.signUp(credentials);
   }
   signIn(credentials: {email; password}){
     return this.supabase.auth.signInWithPassword(credentials);
   }
+  //TODO: MAKE SURE TO CHANGE THE REDIRECT TO URL
   sendPwReset(email){
-    return this.supabase.auth.resetPasswordForEmail(email);
+    return this.supabase.auth.resetPasswordForEmail(email, {redirectTo: 'http://localhost:4200/update-password'});
   }
   async signOut(){
     await this.supabase.auth.signOut();
@@ -70,7 +74,9 @@ export class AuthService {
       return null;
     }
   }
-
+  updateUser(password){
+    return this.supabase.auth.updateUser(password)
+  }
   signInWIthEmail(email: string){
     return this.supabase.auth.signInWithOtp({email});
 

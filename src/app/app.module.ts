@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NavbarComponent } from './navbar/navbar.component';
 import { FeaturedComponent } from './pages/featured/featured.component';
 import { PgTwoOneOneComponent } from './pages/photo-grid/pg-two-one-one/pg-two-one-one.component';
 import { PgOneOneTwoComponent } from './pages/photo-grid/pg-one-one-two/pg-one-one-two.component';
@@ -23,13 +22,17 @@ import { GroupsComponent } from './pages/groups/groups.component';
 import { MessagesComponent } from './pages/messages/messages.component';
 import { LoginHeaderBarComponentComponent } from './login-header-bar-component/login-header-bar-component.component';
 import { AccountTempComponent } from './pages/account-temp/account-temp.component';
+import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { AccountComponent } from './pages/account/account.component';
+import { LoggedInComponent } from './pages/account/logged-in/logged-in.component';
+import { LoggedOutComponent } from './pages/account/logged-out/logged-out.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     PageNotFoundComponent,
-    NavbarComponent,
     FeaturedComponent,
     PgTwoOneOneComponent,
     PgOneOneTwoComponent,
@@ -44,6 +47,11 @@ import { AccountTempComponent } from './pages/account-temp/account-temp.componen
     MessagesComponent,
     LoginHeaderBarComponentComponent,
     AccountTempComponent,
+    UpdatePasswordComponent,
+    NavbarComponent,
+    AccountComponent,
+    LoggedInComponent,
+    LoggedOutComponent,
     
  
   ],

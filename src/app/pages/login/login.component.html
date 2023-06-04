@@ -11,26 +11,23 @@
       </div>
       <div class="modal-body">
         <p>Enter your email:</p>
-        <form (ngSubmit)="sendPwResetRequest()" [formGroup]="credentials">
-            <div class="form-floating mb-3">
-              <input
-                type="email"
-                inputmode="email"
-                class="form-control"
-                formControlName="email"
-                id="floatingInput"
-              />
-              <label for="floatingInput">Email address</label>
-            </div>
-            <div class="d-flex justify-content-center mx-auto mb-4">
-              <button
-                class="btn w-100 btn-secondary"
-                type="submit"
-              >
-                SEND PASSWORD RESET
-              </button>
-            </div>
-          </form>
+        <form (ngSubmit)="sendPwResetRequest()" [formGroup]="pwReq">
+          <div class="form-floating mb-3">
+            <input
+              type="email"
+              inputmode="email"
+              class="form-control"
+              formControlName="email"
+              id="floatingInput"
+            />
+            <label for="floatingInput">Email address</label>
+          </div>
+          <div class="d-flex justify-content-center mx-auto mb-4">
+            <button class="btn w-100 btn-secondary" type="submit">
+              SEND PASSWORD RESET
+            </button>
+          </div>
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" (click)="closePopup()">
@@ -38,6 +35,57 @@
         </button>
       </div>
     </div>
+  </div>
+</div>
+
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{ display: displayMagicModal }"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Get Magic Link</h4>
+      </div>
+      <div class="modal-body">
+        <p>Enter your email:</p>
+        <form (ngSubmit)="sendMagicLink()" [formGroup]="magicModal">
+          <div class="form-floating mb-3">
+            <input
+              type="email"
+              inputmode="email"
+              class="form-control"
+              formControlName="email"
+              id="floatingInput"
+            />
+            <label for="floatingInput">Email address</label>
+          </div>
+          <div class="d-flex justify-content-center mx-auto mb-4">
+            <button class="btn w-100 btn-secondary" type="submit">
+              SEND MAGIC LINK
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="closePopup()">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{ display: showSuccess }"
+>
+  <div class="modal-content">
+    <div class="modal-body">Sent!</div>
   </div>
 </div>
 

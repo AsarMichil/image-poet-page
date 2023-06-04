@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-groups',
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class GroupsComponent {
 
+  constructor(private authService: AuthService){
+
+  }
+
+
+
+  signOut(){
+    this.authService.signOut();
+  }
 }

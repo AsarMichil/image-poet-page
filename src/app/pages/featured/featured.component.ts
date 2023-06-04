@@ -16,8 +16,8 @@ export class FeaturedComponent {
   image7 = 'assets/compressed/DSC08195.JPG';
 
   image8 = 'assets/compressed/DSC08124.JPG';
-  image9 = 'assets/compressed/DSC08124.JPG';
-  image10 = 'assets/compressed/DSC08124.JPG';
+  image9 = 'https://images.unsplash.com/photo-1522093007474-d86e9bf7ba6f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80';
+  image10 = 'https://images.unsplash.com/photo-1550340499-a6c60fc8287c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80';
   image11 = 'assets/compressed/DSC08124.JPG';
   image12 = 'assets/compressed/DSC08124.JPG';
   image13 = 'assets/compressed/DSC08124.JPG';
