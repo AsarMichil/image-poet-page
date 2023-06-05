@@ -58,7 +58,7 @@ export class AuthService {
   }
   //TODO: MAKE SURE TO CHANGE THE REDIRECT TO URL
   sendPwReset(email){
-    return this.supabase.auth.resetPasswordForEmail(email, {redirectTo: 'http://asarmichil/update-password'});
+    return this.supabase.auth.resetPasswordForEmail(email, {redirectTo: 'https://www.asarmichil.com/update-password'});
   }
   async signOut(){
     await this.supabase.auth.signOut();
