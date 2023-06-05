@@ -1,7 +1,5 @@
 <app-navbar></app-navbar>
-<div class="container-fluid px-md-7 px-3">
-  <p>account works!</p>
-
+<div class="container-fluid px-md-7 px-3 pt-4">
   <app-logged-in *ngIf="loggedIn; else elseBlock"></app-logged-in>
   <ng-template #elseBlock>
     <app-logged-out></app-logged-out>

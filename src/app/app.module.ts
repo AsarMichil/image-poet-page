@@ -27,6 +27,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AccountComponent } from './pages/account/account.component';
 import { LoggedInComponent } from './pages/account/logged-in/logged-in.component';
 import { LoggedOutComponent } from './pages/account/logged-out/logged-out.component';
+import { CardStackComponent } from './components/card-stack/card-stack.component';
+import { CardImageComponent } from './components/card-stack/card-image/card-image.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { LoggedOutComponent } from './pages/account/logged-out/logged-out.compon
     AccountComponent,
     LoggedInComponent,
     LoggedOutComponent,
+    CardStackComponent,
+    CardImageComponent,
     
  
   ],

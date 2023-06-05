@@ -15,7 +15,7 @@ import { AccountComponent } from './pages/account/account.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'account', component: AccountTempComponent },
+  { path: 'account-temp', component: AccountTempComponent },
   { path: 'about', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'featured', component: FeaturedComponent },
@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'groups/:groupid', component: MessagesComponent },
   { path: ':userid/gallery', component: GalleryComponent },
   { path: 'update-password', component: UpdatePasswordComponent }, // TODO: add a guard here???
-  {path: 'account-page', component: AccountComponent},
+  {path: 'account', component: AccountComponent},
   { path: '**', component: PageNotFoundComponent },
 ];
 

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-logged-out',
@@ -6,6 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./logged-out.component.scss']
 })
 export class LoggedOutComponent {
-  displayStyle='none';
-  addImages(){}
+  constructor(private router: Router){}
+  goLogin(){
+    this.router.navigate(['/']);
+  }
 }

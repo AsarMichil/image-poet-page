@@ -35,9 +35,10 @@ export class AuthService {
     if(this.currentUser.value){
       return;
     }
-    console.log("loading user");
     const user = await this.supabase.auth.getUser();
-    console.log("loaded user");
+    if(user.error){
+      console.log('failed to load user: ' + user.error.message)
+    }
 
     if(user.data.user){
       this.currentUser.next(user.data.user);
@@ -80,5 +81,9 @@ export class AuthService {
   signInWIthEmail(email: string){
     return this.supabase.auth.signInWithOtp({email});
 
+  }
+
+  getUser(){
+    return this.supabase.auth.getUser();
   }
 }

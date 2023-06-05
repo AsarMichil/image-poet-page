@@ -1,0 +1,15 @@
+@media (max-width: 768px) {
+    .position-md-center {
+        right:44%;
+    } 
+}
+@media (max-width: 576px) {
+    .position-sm-center {
+        right:100%
+    } 
+}
+@media (min-width: 992px) {
+    .position-lg-center {
+        left:26%
+    } 
+}

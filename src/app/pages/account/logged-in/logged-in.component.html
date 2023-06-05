@@ -1,2 +1,31 @@
-<p>logged-in works!</p>
+<h3 class="pb-2">Welcome to your Account!</h3>
 
+<!-- check if more than three images then show card stack 
+otherwise motivate to upload more photos / -->
+<!-- link to account/images? -->
+
+<!-- if more than 3 images show image preview... -->
+<div class="row mt-5">
+  <div class="d-flex flex-column mx-auto col-2 col-md-4 justify-items-center mb-3">
+    <a routerLink="/account/gallery">
+      <app-card-stack></app-card-stack>
+    </a>
+    <div class="w-100 text-center">
+        <button class="btn btn-dark" routerLink="/account/gallery">Your Uploads</button>
+
+    </div>
+  </div>
+
+  <div class="col-10 col-md-6">
+    <p>
+      Welcome to your account page! Click on the card stack to view or add to
+      your uploads!
+    </p>
+  </div>
+</div>
+
+
+<div class="w-100 text-center">
+    <button class="btn btn-danger btn-lg" (click)="signOut()">Sign Out</button>
+
+</div>
