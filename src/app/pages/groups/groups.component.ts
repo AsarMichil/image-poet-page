@@ -9,6 +9,7 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./groups.component.scss']
 })
 export class GroupsComponent implements OnInit{
+  user=this.authService.getCurrentUser();
   groups =[];
 
   constructor(private authService: AuthService, private data: DataService, private router: Router,){

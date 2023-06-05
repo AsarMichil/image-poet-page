@@ -1,6 +1,98 @@
+<!-- Add Poem Pop-up Modal -->
+<ng-template #poemCreate let-modal>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h6>Upload a poem!</h6>
+      <button class="btn btn-outline-dark" (click)="modal.dismiss()">
+        &times;
+      </button>
+    </div>
+    <div class="modal-body">
+      <form (ngSubmit)="createPoem()" [formGroup]="poemToAdd">
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            inputmode="text"
+            class="form-control"
+            formControlName="title"
+            id="floatingTitle"
+          />
+          <label for="floatingTitle">Poem title</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            inputmode="text"
+            class="form-control"
+            formControlName="poem"
+            id="poem"
+          />
+          <label for="poem">Poem text</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            inputmode="text"
+            class="form-control"
+            formControlName="image_link"
+            id="image"
+          />
+          <label for="image">Image Url</label>
+        </div>
+        <div class="d-flex justify-content-center mx-auto mb-4">
+          <button
+            class="btn w-100 btn-secondary"
+            type="submit"
+            [disabled]="poemToAdd.invalid"
+          >
+            Create Poem
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</ng-template>
+
 <app-navbar></app-navbar>
 <div class="container-fluid px-md-7 px-3 pt-4">
-  
+  <h3 class="pb-2">Your gallery</h3>
 
-  <p>gallery works!</p>
+  <button
+    class="btn btn-danger"
+    (click)="openLogin()"
+    *ngIf="(user | async) === false"
+  >
+    Sign in!
+  </button>
+
+  <button
+    class="btn btn-lg btn-success my-4"
+    (click)="openPoemCreate(poemCreate)"
+    *ngIf="user | async"
+  >
+    Create poem!
+  </button>
+
+  <div class="mt-2 mb-2" *ngIf="poems.length === 0">
+    <p>Hi... it's empty in here... create a poem to add it to your gallery!</p>
+  </div>
+
+  <div class="row pb-sm-2 pb-1">
+    <div class="col-5" *ngFor="let poem of poems">
+      <app-poem-card
+        [imageUrl]="poem.image_link"
+        [poemText]="poem.poem"
+        [poemTitle]="poem.title"
+      ></app-poem-card>
+    </div>
+  </div>
+  <div class="w-100 text-center">
+    <button
+      class="mb-4 mt-4 btn btn-danger mx-auto"
+      (click)="signOut()"
+      *ngIf="user | async"
+    >
+      Sign out!
+    </button>
+  </div>
 </div>

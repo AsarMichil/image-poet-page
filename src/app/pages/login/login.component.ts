@@ -11,14 +11,14 @@ import { Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   credentials = this.fb.nonNullable.group({
-    email: ['asarmichil@gmail.com', Validators.required],
-    password: ['123456', Validators.required],
+    email: ['', Validators.required],
+    password: ['', Validators.required],
   });
   pwReq = this.fb.nonNullable.group({
-    email: ['michilzulu@gmail.com', Validators.required],
+    email: ['', Validators.required],
   });
   magicModal = this.fb.nonNullable.group({
-    email: ['zuluev.asar@gmail.com', Validators.required],
+    email: ['', Validators.required],
   });
   constructor(
     private fb: FormBuilder,
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     this.authService.getCurrentUser().subscribe((user) => {
       if (user) {
         console.log('USER ON LOGIN PAGE: ', user);
-        this.router.navigateByUrl('/groups', { replaceUrl: true });
+        this.router.navigateByUrl('/account', { replaceUrl: true });
       }
     });
   }

@@ -1,0 +1,17 @@
+<div
+  class="ratio d-flex shadow-lg card m-0 bg-light border border-2 border-white rounded-3"
+  style="--bs-aspect-ratio: 145%"
+  [ngStyle]="{
+    'background-image': 'url(' + imageUrl + ')',
+    'background-size': 'cover'
+  }"
+>
+  <div
+    class="display-4 card-body w-100 d-flex flex-column justify-content-center text-center text-white"
+  >
+    <div class="card-title pb-2 text-underline"><u>{{ poemTitle }}</u></div>
+    <div class="card-text">
+      {{ poemText }}
+    </div>
+  </div>
+</div>

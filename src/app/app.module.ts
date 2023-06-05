@@ -29,6 +29,7 @@ import { LoggedInComponent } from './pages/account/logged-in/logged-in.component
 import { LoggedOutComponent } from './pages/account/logged-out/logged-out.component';
 import { CardStackComponent } from './components/card-stack/card-stack.component';
 import { CardImageComponent } from './components/card-stack/card-image/card-image.component';
+import { PoemCardComponent } from './components/poem-card/poem-card.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { CardImageComponent } from './components/card-stack/card-image/card-imag
     LoggedOutComponent,
     CardStackComponent,
     CardImageComponent,
+    PoemCardComponent,
     
  
   ],

@@ -3,8 +3,32 @@
   class="position-md-center position-sm-center position-lg-center position-relative"
 >
   <div class="d-flex container h-100 w-100">
-    <app-card-image [rotateNum]="-2"></app-card-image>
-    <app-card-image [rotateNum]="-1"></app-card-image>
-    <app-card-image [rotateNum]="0"></app-card-image>
+    <!-- hacky way to show empties on no poems... -->
+    <app-card-image
+      [rotateNum]="-2"
+      [imageUrl]="poems[2].image_link"
+      *ngIf="poems?.length > 2; else elseNo2"
+    ></app-card-image>
+    <ng-template #elseNo2>
+      <app-card-image [rotateNum]="-2"></app-card-image>
+    </ng-template>
+
+    <app-card-image
+      [rotateNum]="-1"
+      [imageUrl]="poems[1].image_link"
+      *ngIf="poems?.length > 1; else elseNo1"
+    ></app-card-image>
+    <ng-template #elseNo1>
+      <app-card-image [rotateNum]="-1"></app-card-image>
+    </ng-template>
+
+    <app-card-image
+      [rotateNum]="0"
+      [imageUrl]="poems[0].image_link"
+      *ngIf="poems?.length > 0; else elseNo0"
+    ></app-card-image>
+    <ng-template #elseNo0>
+      <app-card-image [rotateNum]="0"></app-card-image>
+    </ng-template>
   </div>
 </div>

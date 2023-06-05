@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment.development';
 
 const GROUPS_DB = 'groups';
 const MESSAGES_DB = 'messages';
+const POEMS_DB = 'poems';
 
 export interface Message {
   created_at: string;
@@ -44,6 +45,10 @@ export class DataService {
       .then((result) => result.data);
   }
 
+  getUsersPoems() {
+    return this.supabase.from(POEMS_DB).select('*').then((result) => result.data);
+  }
+
   async createGroup(title) {
     const newGroup = {
       creator: (await this.supabase.auth.getUser()).data.user.id,
@@ -52,5 +57,13 @@ export class DataService {
     return this.supabase.from(GROUPS_DB).insert(newGroup).select().single();
   }
 
-  async createPoem(title, poem) {}
+  async createPoem(title, poem, image_link) {
+    const newPoem = {
+      creator: (await this.supabase.auth.getUser()).data.user.id,
+      poem,
+      title,
+      image_link,
+    };
+    return this.supabase.from(POEMS_DB).insert(newPoem).select().single();
+  }
 }
