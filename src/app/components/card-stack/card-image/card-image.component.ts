@@ -9,11 +9,12 @@ export class CardImageComponent {
   @Input() imageUrl='';
   @Input() rotateNum: number;
   rotateConstant=9;
+  rotate=1;
   constructor(){
   }
   rotateCard(){
-    this.rotateNum *=this.rotateConstant;
-    const styles = {'transform' : 'rotate('+ this.rotateNum + 'deg)'};
+    this.rotate =this.rotateConstant * this.rotateNum;
+    const styles = {'transform' : 'rotate('+ this.rotate + 'deg)'};
 
     return styles;
   }

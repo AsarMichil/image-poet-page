@@ -3,6 +3,8 @@ import { FormBuilder } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { Validators } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AuthError, AuthResponse } from '@supabase/supabase-js';
 
 @Component({
   selector: 'app-login',
@@ -14,16 +16,19 @@ export class LoginComponent implements OnInit {
     email: ['', Validators.required],
     password: ['', Validators.required],
   });
-  pwReq = this.fb.nonNullable.group({
+  emailRequest = this.fb.nonNullable.group({
     email: ['', Validators.required],
   });
-  magicModal = this.fb.nonNullable.group({
-    email: ['', Validators.required],
-  });
+
+  requestSent = false;
+  requestError = false;
+  requestErrorMessage = '';
+
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private modalService: NgbModal
   ) {
     this.authService.getCurrentUser().subscribe((user) => {
       if (user) {
@@ -54,7 +59,7 @@ export class LoginComponent implements OnInit {
   hideSuccess() {
     this.showSuccess = 'none';
   }
-  
+
   ngOnInit(): void {}
 
   async login() {
@@ -75,33 +80,47 @@ export class LoginComponent implements OnInit {
     return;
   }
 
-  async sendMagicLink(){
-    console.log(this.magicModal.getRawValue().email);
-    const data = await this.authService.signInWIthEmail(this.magicModal.getRawValue().email)
+  async sendMagicLink() {
+    console.log(this.emailRequest.getRawValue().email);
+    const data = await this.authService.signInWIthEmail(
+      this.emailRequest.getRawValue().email
+    );
     if (data.error) {
-      loginFailed(data);
-    }else{
-      this.showSuccess = 'block';
-      setTimeout(this.hideSuccess,1500);
+      this.requestErrorHandler(data.error);
+    } else {
+      this.requestSent = true;
     }
   }
   async sendPwResetRequest() {
-    console.log(this.pwReq.getRawValue().email);
-    const data = await this.authService.sendPwReset(this.pwReq.getRawValue().email)
+    console.log(this.emailRequest.getRawValue().email);
+    const data = await this.authService.sendPwReset(
+      this.emailRequest.getRawValue().email
+    );
     if (data.error) {
-      pwReqFailed(data);
-    }else{
-      this.showSuccess = 'block';
-      setTimeout(this.hideSuccess,1500);
-
+      this.requestErrorHandler(data.error);
+    } else {
+      this.requestSent = true;
     }
   }
+  openModal(modal) {
+    this.requestSent = false;
+    this.requestError = false;
+    this.requestErrorMessage = '';
+    this.modalService.open(modal);
+  }
+  requestErrorHandler(error: AuthError) {
+    console.log(error.message);
+    if (error.status == 429) {
+      this.requestErrorMessage = 'Too many requests! ';
+    }
+    this.requestError = true;
+    this.requestErrorMessage += error.message;
+  }
 }
-function loginFailed(data) {
+function loginFailed(data: AuthResponse) {
   console.log('LOGIN FAILED', data.error.message);
 }
 
 function pwReqFailed(data) {
   console.log('PASSWORD REQU FAILED', data.error.message);
 }
-
