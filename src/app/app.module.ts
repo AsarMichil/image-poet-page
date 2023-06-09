@@ -30,6 +30,7 @@ import { LoggedOutComponent } from './pages/account/logged-out/logged-out.compon
 import { CardStackComponent } from './components/card-stack/card-stack.component';
 import { CardImageComponent } from './components/card-stack/card-image/card-image.component';
 import { PoemCardComponent } from './components/poem-card/poem-card.component';
+import { MarkdownModule } from 'ngx-markdown';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { PoemCardComponent } from './components/poem-card/poem-card.component';
     NgbModule,
     ReactiveFormsModule,
     FormsModule,
+    MarkdownModule.forRoot(),
     
   ],
   providers: [],

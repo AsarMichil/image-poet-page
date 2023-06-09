@@ -39,17 +39,19 @@ $utilities: map-merge(
       ),
   )
 );
+// $font-size-base: 1.125rem;
+$font-size-base: 1.125rem;
+$body-bg: $primary;
+$font-family-base: "Montserrat", sans-serif;
 
 /* Importing Bootstrap SCSS file. */
 @import "bootstrap/scss/bootstrap";
 @import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Montserrat:wght@100;300;400;500&display=swap");
 
-
 $heading-font-family: "Montserrat", sans-serif;
 $nav-font-family: "Montserrat", sans-serif;
 $brand-font-family: "Libre Baskerville, serif";
 $body-font-family: "Montserrat", sans-serif;
-$base-font-size: 18px;
 $base-font-weight: 400;
 $heading-font-weight: 500;
 $nav-font-weight: 100;
@@ -63,25 +65,26 @@ nav {
   }
 }
 
-body {
-  background-color: $primary;
-  font-family: $body-font-family;
-}
+
 html {
   background-color: $primary;
 }
 
-.obj-fit-cover{
+.obj-fit-cover {
   object-fit: cover;
 }
 
-.brand-text{
+.brand-text {
   font-size: 32px;
   font-family: $brand-font-family;
   font-weight: $base-font-weight;
 }
 
-.nav-link-text{
+.nav-link-text {
   font-size: 18px;
   font-weight: $base-font-weight;
+}
+
+.slick-disabled {
+  display: none;
 }

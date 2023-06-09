@@ -45,7 +45,7 @@ export class GalleryComponent implements OnInit {
     }else{
       console.log('poem add success!')
       this.poems = await this.data.getUsersPoems();
-
+      console.log(this.poems);
     }
   }
 

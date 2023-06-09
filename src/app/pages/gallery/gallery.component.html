@@ -66,24 +66,26 @@
   </button>
 
   <button
-    class="btn btn-lg btn-success my-4"
+    class="btn btn-lg btn-success my-4 w-100"
     (click)="openPoemCreate(poemCreate)"
     *ngIf="user | async"
   >
-    Create poem!
+    Create a poem!
   </button>
 
   <div class="mt-2 mb-2" *ngIf="poems.length === 0">
     <p>Hi... it's empty in here... create a poem to add it to your gallery!</p>
   </div>
-
-  <div class="row pb-sm-2 pb-1">
-    <div class="col-5" *ngFor="let poem of poems">
-      <app-poem-card
-        [imageUrl]="poem.image_link"
-        [poemText]="poem.poem"
-        [poemTitle]="poem.title"
-      ></app-poem-card>
+  <div class="container">
+    <div class="row pb-sm-2 pb-1">
+      <div class="col-10 col-lg-5" *ngFor="let poem of poems">
+        <app-poem-card
+          class=""
+          [imageUrl]="poem.image_link"
+          [poemText]="poem.poem"
+          [poemTitle]="poem.title"
+        ></app-poem-card>
+      </div>
     </div>
   </div>
   <div class="w-100 text-center">
