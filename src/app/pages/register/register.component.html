@@ -1,3 +1,21 @@
+<!-- success popup -->
+<ng-template #reg let-regSubmitModal>
+  <div class="modal-content">
+    <div class="modal-body">
+      <div *ngIf="!regSuccess; else sentConfirm" class="alert alert-danger">
+        {{ requestErrorMessage }}
+      </div>
+      <ng-template #sentConfirm>
+        <div class="alert alert-success" role="alert">
+          Thanks for registering &lt;3 ! Check your email for a confirmation
+          link to complete registration!
+        </div>
+        <button class="btn btn-success" routerLink="/" (click)="regSubmitModal.dismiss()">Ok!</button>
+      </ng-template>
+    </div>
+  </div>
+</ng-template>
+
 <!-- header -->
 <div class="position-top sticky-top px-0 w-100 vh-100 login-content">
   <div class="mx-md-7 mx-3 pb-7">
@@ -8,7 +26,7 @@
   </div>
 
   <div class="container-fluid px-md-7 px-3 pt-4">
-    <form class="mx-3" (ngSubmit)="createAccount()" [formGroup]="credentials">
+    <form class="mx-3" (ngSubmit)="createAccount(reg)" [formGroup]="credentials">
       <div class="form-floating mb-3">
         <input
           type="email"
