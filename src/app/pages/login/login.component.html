@@ -1,3 +1,14 @@
+<!-- login failure popup -->
+<ng-template #loginModal let-loginFailModal>
+  <div class="modal-content">
+    <div class="modal-body">
+      <div class="alert alert-danger">
+        {{ requestErrorMessage }}
+      </div>
+    </div>
+  </div>
+</ng-template>
+
 <!-- Reset Password Pop-up Modal -->
 <ng-template #resetPass let-resetPassModal>
   <div class="modal-content">
@@ -199,7 +210,7 @@
   <!-- card -->
   <div class="card mx-auto" style="width: 18rem">
     <div class="card-body">
-      <form (ngSubmit)="login()" [formGroup]="credentials">
+      <form (ngSubmit)="login(loginModal)" [formGroup]="credentials">
         <div class="form-floating mb-3">
           <input
             type="email"

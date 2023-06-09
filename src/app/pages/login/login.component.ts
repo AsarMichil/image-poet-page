@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
   requestSent = false;
   requestError = false;
   requestErrorMessage = '';
+  loginFailedMessage='';
 
   constructor(
     private fb: FormBuilder,
@@ -62,11 +63,13 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  async login() {
+  async login(modal) {
     this.authService
       .signIn(this.credentials.getRawValue())
       .then(async (data) => {
         if (data.error) {
+          this.requestErrorHandler(data.error);
+          this.modalService.open(modal)
           loginFailed(data);
         }
       });
@@ -109,16 +112,21 @@ export class LoginComponent implements OnInit {
     this.modalService.open(modal);
   }
   requestErrorHandler(error: AuthError) {
+    this.requestErrorMessage ='';
     console.log(error.message);
     if (error.status == 429) {
       this.requestErrorMessage = 'Too many requests! ';
     }
+
     this.requestError = true;
     this.requestErrorMessage += error.message;
+    if (error.status == 400) {
+      this.requestErrorMessage += '. Check your username and/or password! ';
+    }
   }
 }
 function loginFailed(data: AuthResponse) {
-  console.log('LOGIN FAILED', data.error.message);
+  console.log('LOGIN FAILED', data.error.message, data.error.status);
 }
 
 function pwReqFailed(data) {
